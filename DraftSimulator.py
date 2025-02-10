@@ -24,7 +24,7 @@ drafted_players = []
 teams = ["Titans", "Browns", "Giants", "Patriots", "Jaguars", "Raiders", "Jets", "Panthers",
          "Saints", "Bears", "49ers", "Cowboys", "Dolphins", "Colts", "Falcons", "Cardinals",
          "Bengals", "Seahawks", "Buccaneers", "Broncos", "Steelers", "Chargers", "Packers", "Vikings",
-         "Texans", "Rams", "Ravens", "Lions", "Commanders", "Bills", "Eagles", "Chiefs"]
+         "Texans", "Rams", "Ravens", "Lions", "Commanders", "Bills", "Chiefs", "Eagles"]
 
 
 #drafts a player
@@ -39,7 +39,7 @@ def draft():
 
 #updates the GUI
 def update_draft_board(selected_player):
-    travis_hunter_label.place(x=150, y=165) #testing for now
+    travis_hunter_label.place(x=152, y=175) #testing for now
     return 0
 
 
