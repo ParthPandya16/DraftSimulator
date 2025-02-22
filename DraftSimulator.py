@@ -1,5 +1,8 @@
 from tkinter import *
 import numpy as np
+import time
+import csv
+
 
 #initializing the window and the background
 window = Tk()
@@ -19,7 +22,14 @@ travis_hunter_label = Label(window, image = travis_hunter)
 
 #draft data
 current_pick = 1
-available_players = ["Travis Hunter", "Shedeur Sanders", "Cam Ward"]
+csv_file_path = 'Player_data.csv'
+available_players = []
+with open(csv_file_path, mode='r') as file:
+    reader = csv.reader(file)
+    next(reader, None)
+    for row in reader:
+        available_players.append(row[0])
+#print(available_players)
 drafted_players = []
 teams = ["Titans", "Browns", "Giants", "Patriots", "Jaguars", "Raiders", "Jets", "Panthers",
          "Saints", "Bears", "49ers", "Cowboys", "Dolphins", "Colts", "Falcons", "Cardinals",
@@ -27,11 +37,14 @@ teams = ["Titans", "Browns", "Giants", "Patriots", "Jaguars", "Raiders", "Jets",
          "Texans", "Rams", "Ravens", "Lions", "Commanders", "Bills", "Chiefs", "Eagles"]
 
 
+
 #drafts a player
 def draft():
     #goes through the list of available players, and assigns weights to them
+    for current_player in available_players:
+        break
     #finds the player with the highest weight
-    selected_player = "Travis Hunter" #testing for now
+    selected_player = available_players[0] #testing for now
     #adds player to drafted_players list and removes player from available_player list
     drafted_players.append(selected_player)
     #available_players.remove(selected_player)
@@ -47,6 +60,7 @@ for current_team in teams:
     selected_player = draft()
     print(str(current_pick) + ": " + current_team + " - " + selected_player)
     update_draft_board(selected_player)
+    time.sleep(1)
     current_pick += 1
 
-window.mainloop()
+#window.mainloop()
