@@ -1,65 +1,67 @@
-Prospect Name,Position,Overall Rank,Stat Score,Athlete Score,College,SOS
-Travis Hunter,WR / CB,1,,,Colorado,0.800
-Abdul Carter,DE,2,,,Penn State,0.785
-Mason Graham,DT,3,,,Michigan,0.985
-Shedeur Sanders,QB,4,,,Colorado,0.800
-Will Johnson,CB,5,,,Michigan,0.985
-Tetairoa McMillan,WR,6,,,Arizona,0.593
-Cam Ward,QB,7,,,Miami,0.548
-WIll Campbell,OT,8,,,LSU,0.911
-Ashton Jeanty,RB,9,,,Boise State,0.385
-Kelvin Banks Jr.,OT,10,,,Texas,0.837
-Mykel Williams,DE,11,,,Georgia,0.956
-Malakai Starks,S,12,,,Georgia,0.956
-Tyler Warren,TE,13,,,Penn State,0.785
-James Pearce Jr.,DE,14,,,Tennessee,0.644
-Luther Burden III,WR,15,,,Missouri,0.622
-Jalon Walker,LB,16,,,Georgia,0.956
-Colston Loveland,TE,17,,,Michigan,0.985
-Emeka Egbuka,WR,18,,,Ohio State,0.807
-Kenneth Grant,DT,19,,,Michigan,0.985
-Mike Green,DE,20,,,Marshall,0.311
-Josh Simmons,OT,21,,,Ohio State,0.807
-Nic Scourton,DE,22,,,Texas A&M,0.674
-Benjamin Morrison,CB,23,,,Notre Dame,0.830
-Shavon Revel Jr.,CB,24,,,East Carolina,0.044
-Shemar Stewart,DE,25,,,Texas A&M,0.674
-Jahdae Barron,CB,26,,,Texas,0.837
-John Conerly Jr.,OT,27,,,Oregon,0.941
-Walter Nolen,DT,28,,,Ole Miss,0.778
-Tyler Booker,OG,29,,,Alabama,0.948
-Derrick Harmon,DT,30,,,Oregon,0.941
-Armand Membou,OT,31,,,Missouri,0.622
-Jihaad Campbell,LB,32,,,Alabama,0.948
-Tyleik Williams,DT,33,,,Ohio State,0.807
-Aireontae Ersery,OT,34,,,Minnesota,0.711
-Jack Sawyer,DE,35,,,Ohio State,0.807
-Matthew Golden,WR,36,,,Texas,0.837
-Donovan Jackson,OG,37,,,Ohio State,0.807
-Nick Emmanwori,S,38,,,South Carolina,0.852
-Jonah Savaiinaea,OT,39,,,Arizona,0.593
-Landon Jackson,DE,40,,,Arkansas,0.874
-Cameron Williams,OT,41,,,Texas,0.837
-Princely Umanmielen,DE,42,,,Ole Miss,0.778
-J.T. Tuimoloau,DE,43,,,Ohio State,0.807
-Trey Amos,DB,44,,,Ole Miss,0.778
-Omarion Hampton,RB,45,,,North Carolina,0.496
-Tre Harris,WR,46,,,Ole Miss,0.778
-Elic Ayomanor,WR,47,,,Stanford,0.667
-Wyatt Milum,OT,48,,,West Virginia,0.889
-Kaleb Johnson,RB,49,,,Iowa,0.793
-Jalen Milroe,QB,50,,,Alabama,0.948
-Xaview Watts,S,51,,,Notre Dame,0.830
-Isaiah Bond,WR,52,,,Texas,0.837
-Alfred Collins,DT,53,,,Texas,0.837
-Grey Zabel,OT,54,,,North Dakota State,0.081
-TreVeyon Henderson,RB,55,,,Ohio State,0.807
-Deone Walker,DT,56,,,Kentucky,0.919
-T.J. Sanders,DT,57,,,South Carolina,0.852
-Maxwell Hairston,CB,58,,,Kentucky,0.919
-Harold Fannin Jr.,TE,59,,,Bowling Green,0.319
-Azareye'h Thomas,CB,60,,,Florida State,0.756
-Quinshon Judkins,RB,61,,,Ohio State,0.807
-Donovan Ezeiruaku,DE,62,,,Boston College,0.585
-Quinn Ewers,QB,63,,,Texas,0.837
-Jared Ivey,DE,64,,,Ole Miss,0.778
+Prospect Name,Position,Overall Rank,Stat Score,Combine Score,SOS,College
+Travis Hunter,WR / CB,1,182.58,0,0.800,Colorado
+Abdul Carter,DE,2,154.5,0,0.785,Penn State
+Mason Graham,DT,3,143,0,0.985,Michigan
+WIll Campbell,OT,4,100,40,0.911,LSU
+Ashton Jeanty,RB,5,197.9,0,0.385,Boise State
+Cam Ward,QB,6,172.2,0,0.548,Miami
+Tetairoa McMillan,WR,7,110.6,0,0.593,Arizona
+Shedeur Sanders,QB,8,168.2,0,0.800,Colorado
+Armand Membou,OT,9,100,80,0.622,Missouri
+Tyler Warren,TE,10,90.85,0,0.785,Penn State
+Will Johnson,CB,11,67.5,0,0.985,Michigan
+Jalon Walker,LB,12,118.5,0,0.956,Georgia
+Shemar Stewart,DE,13,100.5,60,0.674,Texas A&M
+Kelvin Banks Jr.,OT,14,100,0,0.837,Texas
+Mykel Williams,DE,15,82,0,0.956,Georgia
+Mike Green,DE,16,269,20,0.311,Marshall
+Colston Loveland,TE,17,58.7,0,0.985,Michigan
+Kenneth Grant,DT,18,112,0,0.985,Michigan
+James Pearce Jr.,DE,19,121,0,0.644,Tennessee
+Josh Simmons,OT,20,100,0,0.807,Ohio State
+Walter Nolen,DT,21,147,0,0.778,Ole Miss
+Matthew Golden,WR,22,62.3,20,0.837,Texas
+Jahdae Barron,CB,23,111.5,-20,0.837,Texas
+Jihaad Campbell,LB,24,240,40,0.948,Alabama
+Emeka Egbuka,WR,25,65.9,0,0.807,Ohio State
+Malakai Starks,S,26,118,-60,0.956,Georgia
+Omarion Hampton,RB,27,170.9,40,0.496,North Carolina
+Derrick Harmon,DT,28,131.5,0,0.941,Oregon
+Nick Emmanwori,S,29,150,60,0.852,South Carolina
+Tyler Booker,OG,30,100,-80,0.948,Alabama
+Luther Burden III,WR,31,66.4,20,0.622,Missouri
+Grey Zabel,OT,32,100,20,0.081,North Dakota State
+John Conerly Jr.,OT,33,100,0,0.941,Oregon
+Donovan Ezeiruaku,DE,34,278,20,0.585,Boston College
+Nic Scourton,DE,35,125.5,0,0.674,Texas A&M
+Shavon Revel Jr.,CB,36,118,0,0.044,East Carolina
+Donovan Jackson,OG,37,100,20,0.807,Ohio State
+Maxwell Hairston,CB,38,92.5,60,0.919,Kentucky
+Jaxson Dart,QB,39,180.7,0,0.778,Ole Miss
+Aireontae Ersery,OT,40,100,40,0.711,Minnesota
+TreVeyon Henderson,RB,41,164,60,0.807,Ohio State
+Benjamin Morrison,CB,42,83.5,0,0.830,Notre Dame
+Tyleik Williams,DT,43,130,0,0.807,Ohio State
+Landon Jackson,DE,44,165.5,40,0.874,Arkansas
+Kaleb Johnson,RB,45,145.8,-20,0.793,Iowa
+Azareye'h Thomas,CB,46,96.5,-20,0.756,Florida State
+Darius Alexander,DT,47,131.5,20,0.081,Toledo
+Alfred Collins,DT,48,133.5,-40,0.837,Texas
+J.T. Tuimoloau,DE,49,160,0,0.807,Ohio State
+Jack Sawyer,DE,50,159.5,0,0.807,Ohio State
+T.J. Sanders,DT,51,150,0,0.852,South Carolina
+Trey Amos,CB,52,110,-20,0.778,Ole Miss
+Jonah Savaiinaea,OT,53,100,40,0.593,Arizona
+Xaview Watts,S,54,132,0,0.830,Notre Dame
+Jayden Higgins,WR,55,91.7,40,0.835,Iowa State
+Tre Harris,WR,56,129.7,0,0.778,Ole Miss
+Quinshon Judkins,RB,57,154.8,40,0.807,Ohio State
+Princely Umanmielen,DE,58,135.5,20,0.778,Ole Miss
+Elic Ayomanor,WR,59,69.8,20,0.667,Stanford
+Tate Ratledge,OG,60,100,60,0.956,Georgia
+Cameron Williams,OT,61,100,20,0.837,Texas
+Harold Fannin Jr.,TE,62,125.4,20,0.319,Bowling Green
+Jalen Milroe,QB,63,148.8,0,0.948,Alabama
+Wyatt Milum,OT,64,100,-40,0.889,West Virginia
+Jared Ivey,DE,65,149,0,0.778,Ole Miss
+Quinn Ewers,QB,66,149,0,0.837,Texas
