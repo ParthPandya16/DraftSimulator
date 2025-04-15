@@ -4,6 +4,13 @@ from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
 import time
 import csv
+import pyttsx3
+import threading
+from PIL import Image, ImageTk
+import os
+
+engine = pyttsx3.init()
+
 
 window = Tk()
 window.geometry("1700x900")
@@ -14,151 +21,153 @@ window.iconphoto(True, small_logo)
 background = PhotoImage(file = "Background.png")
 background_label = Label(window, image = background)
 background_label.place(x = 10, y = 0)
+player_label = {}
 starting_x = 137
-starting_y = 180
-
-travis_hunter_img = PhotoImage(file="images/travis_hunter.png")
-abdul_carter_img = PhotoImage(file="images/abdul_carter.png")
-mason_graham_img = PhotoImage(file="images/mason_graham.png")
-will_campbell_img = PhotoImage(file="images/will_campbell.png")
-ashton_jeanty_img = PhotoImage(file="images/ashton_jeanty.png")
-cam_ward_img = PhotoImage(file="images/cam_ward.png")
-tetairoa_mcmillan_img = PhotoImage(file="images/tetairoa_mcmillan.png")
-shedeur_sanders_img = PhotoImage(file="images/shedeur_sanders.png")
-armand_membou_img = PhotoImage(file="images/armand_membou.png")
-tyler_warren_img = PhotoImage(file="images/tyler_warren.png")
-will_johnson_img = PhotoImage(file="images/will_johnson.png")
-jalon_walker_img = PhotoImage(file="images/jalon_walker.png")
-shemar_stewart_img = PhotoImage(file="images/shemar_stewart.png")
-kelvin_banks_jr_img = PhotoImage(file="images/kelvin_banks_jr.png")
-mykel_williams_img = PhotoImage(file="images/mykel_williams.png")
-mike_green_img = PhotoImage(file="images/mike_green.png")
-colston_loveland_img = PhotoImage(file="images/colston_loveland.png")
-kenneth_grant_img = PhotoImage(file="images/kenneth_grant.png")
-james_pearce_jr_img = PhotoImage(file="images/james_pearce_jr.png")
-josh_simmons_img = PhotoImage(file="images/josh_simmons.png")
-walter_nolen_img = PhotoImage(file="images/walter_nolen.png")
-matthew_golden_img = PhotoImage(file="images/matthew_golden.png")
-jahdae_barron_img = PhotoImage(file="images/jahdae_barron.png")
-jihaad_campbell_img = PhotoImage(file="images/jihaad_campbell.png")
-emeka_egbuka_img = PhotoImage(file="images/emeka_egbuka.png")
-malakai_starks_img = PhotoImage(file="images/malakai_starks.png")
-omarion_hampton_img = PhotoImage(file="images/omarion_hampton.png")
-derrick_harmon_img = PhotoImage(file="images/derrick_harmon.png")
-nick_emmanwori_img = PhotoImage(file="images/nick_emmanwori.png")
-tyler_booker_img = PhotoImage(file="images/tyler_booker.png")
-luther_buden_iii_img = PhotoImage(file="images/luther_buden_iii.png")
-grey_zabel_img = PhotoImage(file="images/grey_zabel.png")
-john_conerly_jr_img = PhotoImage(file="images/john_conerly_jr.png")
-donovan_ezeiruaku_img = PhotoImage(file="images/donovan_ezeiruaku.png")
-nic_scourton_img = PhotoImage(file="images/nic_scourton.png")
-shavon_revel_jr_img = PhotoImage(file="images/shavon_revel_jr.png")
-donovan_jackson_img = PhotoImage(file="images/donovan_jackson.png")
-maxwell_hairston_img = PhotoImage(file="images/maxwell_hairston.png")
-jaxon_dart_img = PhotoImage(file="images/jaxon_dart.png")
-aireontae_ersery_img = PhotoImage(file="images/aireontae_ersery.png")
-treveyon_henderson_img = PhotoImage(file="images/treveyon_henderson.png")
-benjamin_morrison_img = PhotoImage(file="images/benjamin_morrison.png")
-tyleik_williams_img = PhotoImage(file="images/tyleik_williams.png")
-landon_jackson_img = PhotoImage(file="images/landon_jackson.png")
-kaleb_johnson_img = PhotoImage(file="images/kaleb_johnson.png")
-azareyeh_thomas_img = PhotoImage(file="images/azareyeh_thomas.png")
-darius_alexander_img = PhotoImage(file="images/darius_alexander.png")
-alfred_collins_img = PhotoImage(file="images/alfred_collins.png")
-jt_tuimoloau_img = PhotoImage(file="images/jt_tuimoloau.png")
-jack_sawyer_img = PhotoImage(file="images/jack_sawyer.png")
-tj_sanders_img = PhotoImage(file="images/tj_sanders.png")
-trey_amos_img = PhotoImage(file="images/trey_amos.png")
-jonah_savaiinaea_img = PhotoImage(file="images/jonah_savaiinaea.png")
-xavier_watts_img = PhotoImage(file="images/xavier_watts.png")
-jayden_higgins_img = PhotoImage(file="images/jayden_higgins.png")
-tre_harris_img = PhotoImage(file="images/tre_harris.png")
-quinshon_judkins_img = PhotoImage(file="images/quinshon_judkins.png")
-princeley_umanmielen_img = PhotoImage(file="images/princeley_umanmielen.png")
-elic_ayomanor_img = PhotoImage(file="images/elic_ayomanor.png")
-tate_ratledge_img = PhotoImage(file="images/tate_ratledge.png")
-cameron_williams_img = PhotoImage(file="images/cameron_williams.png")
-harold_fanin_jr_img = PhotoImage(file="images/harold_fanin_jr.png")
-jalen_milroe_img = PhotoImage(file="images/jalen_milroe.png")
-wyatt_milum_img = PhotoImage(file="images/wyatt_milum.png")
-jared_ivey_img = PhotoImage(file="images/jared_ivey.png")
-quinn_ewers_img = PhotoImage(file="images/quinn_ewers.png")
-
-travis_hunter = Label(window, image=travis_hunter_img)
-abdul_carter = Label(window, image=abdul_carter_img)
-mason_graham = Label(window, image=mason_graham_img)
-will_campbell = Label(window, image=will_campbell_img)
-ashton_jeanty = Label(window, image=ashton_jeanty_img)
-cam_ward = Label(window, image=cam_ward_img)
-tetairoa_mcmillan = Label(window, image=tetairoa_mcmillan_img)
-shedeur_sanders = Label(window, image=shedeur_sanders_img)
-armand_membou = Label(window, image=armand_membou_img)
-tyler_warren = Label(window, image=tyler_warren_img)
-will_johnson = Label(window, image=will_johnson_img)
-jalon_walker = Label(window, image=jalon_walker_img)
-shemar_stewart = Label(window, image=shemar_stewart_img)
-kelvin_banks_jr = Label(window, image=kelvin_banks_jr_img)
-mykel_williams = Label(window, image=mykel_williams_img)
-mike_green = Label(window, image=mike_green_img)
-colston_loveland = Label(window, image=colston_loveland_img)
-kenneth_grant = Label(window, image=kenneth_grant_img)
-james_pearce_jr = Label(window, image=james_pearce_jr_img)
-josh_simmons = Label(window, image=josh_simmons_img)
-walter_nolen = Label(window, image=walter_nolen_img)
-matthew_golden = Label(window, image=matthew_golden_img)
-jahdae_barron = Label(window, image=jahdae_barron_img)
-jihaad_campbell = Label(window, image=jihaad_campbell_img)
-emeka_egbuka = Label(window, image=emeka_egbuka_img)
-malakai_starks = Label(window, image=malakai_starks_img)
-omarion_hampton = Label(window, image=omarion_hampton_img)
-derrick_harmon = Label(window, image=derrick_harmon_img)
-nick_emmanwori = Label(window, image=nick_emmanwori_img)
-tyler_booker = Label(window, image=tyler_booker_img)
-luther_buden_iii = Label(window, image=luther_buden_iii_img)
-grey_zabel = Label(window, image=grey_zabel_img)
-john_conerly_jr = Label(window, image=john_conerly_jr_img)
-donovan_ezeiruaku = Label(window, image=donovan_ezeiruaku_img)
-nic_scourton = Label(window, image=nic_scourton_img)
-shavon_revel_jr = Label(window, image=shavon_revel_jr_img)
-donovan_jackson = Label(window, image=donovan_jackson_img)
-maxwell_hairston = Label(window, image=maxwell_hairston_img)
-jaxon_dart = Label(window, image=jaxon_dart_img)
-aireontae_ersery = Label(window, image=aireontae_ersery_img)
-treveyon_henderson = Label(window, image=treveyon_henderson_img)
-benjamin_morrison = Label(window, image=benjamin_morrison_img)
-tyleik_williams = Label(window, image=tyleik_williams_img)
-landon_jackson = Label(window, image=landon_jackson_img)
-kaleb_johnson = Label(window, image=kaleb_johnson_img)
-azareyeh_thomas = Label(window, image=azareyeh_thomas_img)
-darius_alexander = Label(window, image=darius_alexander_img)
-alfred_collins = Label(window, image=alfred_collins_img)
-jt_tuimoloau = Label(window, image=jt_tuimoloau_img)
-jack_sawyer = Label(window, image=jack_sawyer_img)
-tj_sanders = Label(window, image=tj_sanders_img)
-trey_amos = Label(window, image=trey_amos_img)
-jonah_savaiinaea = Label(window, image=jonah_savaiinaea_img)
-xavier_watts = Label(window, image=xavier_watts_img)
-jayden_higgins = Label(window, image=jayden_higgins_img)
-tre_harris = Label(window, image=tre_harris_img)
-quinshon_judkins = Label(window, image=quinshon_judkins_img)
-princeley_umanmielen = Label(window, image=princeley_umanmielen_img)
-elic_ayomanor = Label(window, image=elic_ayomanor_img)
-tate_ratledge = Label(window, image=tate_ratledge_img)
-cameron_williams = Label(window, image=cameron_williams_img)
-harold_fanin_jr = Label(window, image=harold_fanin_jr_img)
-jalen_milroe = Label(window, image=jalen_milroe_img)
-wyatt_milum = Label(window, image=wyatt_milum_img)
-jared_ivey = Label(window, image=jared_ivey_img)
-quinn_ewers = Label(window, image=quinn_ewers_img)
+starting_y = 163
+#
+img_width = 75
+img_height = 75
 
 
+def load_resized_image(path, width=img_width, height=img_height):
+    image = Image.open(path)
+    image = image.resize((width, height), Image.LANCZOS)
+    return ImageTk.PhotoImage(image)
+travis_hunter_img = load_resized_image("images/travis_hunter.png")
+abdul_carter_img = load_resized_image("images/abdul_carter.png")
+mason_graham_img = load_resized_image("images/mason_graham.png")
+will_campbell_img = load_resized_image("images/will_campbell.png")
+ashton_jeanty_img = load_resized_image("images/ashton_jeanty.png")
+cam_ward_img = load_resized_image("images/cam_ward.png")
+tetairoa_mcmillan_img = load_resized_image("images/tetairoa_mcmillan.png")
+shedeur_sanders_img = load_resized_image("images/shedeur_sanders.png")
+armand_membou_img = load_resized_image("images/armand_membou.png")
+tyler_warren_img = load_resized_image("images/tyler_warren.png")
+will_johnson_img = load_resized_image("images/will_johnson.png")
+jalon_walker_img = load_resized_image("images/jalon_walker.png")
+shemar_stewart_img = load_resized_image("images/shemar_stewart.png")
+kelvin_banks_jr_img = load_resized_image("images/kelvin_banks_jr.png")
+mykel_williams_img = load_resized_image("images/mykel_williams.png")
+mike_green_img = load_resized_image("images/mike_green.png")
+colston_loveland_img = load_resized_image("images/colston_loveland.png")
+kenneth_grant_img = load_resized_image("images/kenneth_grant.png")
+james_pearce_jr_img = load_resized_image("images/james_pearce_jr.png")
+josh_simmons_img = load_resized_image("images/josh_simmons.png")
+walter_nolen_img = load_resized_image("images/walter_nolen.png")
+matthew_golden_img = load_resized_image("images/matthew_golden.png")
+jahdae_barron_img = load_resized_image("images/jahdae_barron.png")
+jihaad_campbell_img = load_resized_image("images/jihaad_campbell.png")
+emeka_egbuka_img = load_resized_image("images/emeka_egbuka.png")
+malakai_starks_img = load_resized_image("images/malakai_starks.png")
+omarion_hampton_img = load_resized_image("images/omarion_hampton.png")
+derrick_harmon_img = load_resized_image("images/derrick_harmon.png")
+nick_emmanwori_img = load_resized_image("images/nick_emmanwori.png")
+tyler_booker_img = load_resized_image("images/tyler_booker.png")
+luther_burden_iii_img = load_resized_image("images/luther_burden_iii.png")
+grey_zabel_img = load_resized_image("images/grey_zabel.png")
+josh_conerly_jr_img = load_resized_image("images/josh_conerly_jr.png")
+donovan_ezeiruaku_img = load_resized_image("images/donovan_ezeiruaku.png")
+nic_scourton_img = load_resized_image("images/nic_scourton.png")
+shavon_revel_jr_img = load_resized_image("images/shavon_revel_jr.png")
+donovan_jackson_img = load_resized_image("images/donovan_jackson.png")
+maxwell_hairston_img = load_resized_image("images/maxwell_hairston.png")
+jaxson_dart_img = load_resized_image("images/jaxson_dart.png")
+aireontae_ersery_img = load_resized_image("images/aireontae_ersery.png")
+treveyon_henderson_img = load_resized_image("images/treveyon_henderson.png")
+benjamin_morrison_img = load_resized_image("images/benjamin_morrison.png")
+tyleik_williams_img = load_resized_image("images/tyleik_williams.png")
+landon_jackson_img = load_resized_image("images/landon_jackson.png")
+kaleb_johnson_img = load_resized_image("images/kaleb_johnson.png")
+azareyeh_thomas_img = load_resized_image("images/azareyeh_thomas.png")
+darius_alexander_img = load_resized_image("images/darius_alexander.png")
+alfred_collins_img = load_resized_image("images/alfred_collins.png")
+jt_tuimoloau_img = load_resized_image("images/jt_tuimoloau.png")
+jack_sawyer_img = load_resized_image("images/jack_sawyer.png")
+tj_sanders_img = load_resized_image("images/tj_sanders.png")
+trey_amos_img = load_resized_image("images/trey_amos.png")
+jonah_savaiinaea_img = load_resized_image("images/jonah_savaiinaea.png")
+xavier_watts_img = load_resized_image("images/xavier_watts.png")
+jayden_higgins_img = load_resized_image("images/jayden_higgins.png")
+tre_harris_img = load_resized_image("images/tre_harris.png")
+quinshon_judkins_img = load_resized_image("images/quinshon_judkins.png")
+princeley_umanmielen_img = load_resized_image("images/princeley_umanmielen.png")
+elic_ayomanor_img = load_resized_image("images/elic_ayomanor.png")
+tate_ratledge_img = load_resized_image("images/tate_ratledge.png")
+cameron_williams_img = load_resized_image("images/cameron_williams.png")
+harold_fannin_jr_img = load_resized_image("images/harold_fannin_jr.png")
+jalen_milroe_img = load_resized_image("images/jalen_milroe.png")
+wyatt_milum_img = load_resized_image("images/wyatt_milum.png")
+jared_ivey_img = load_resized_image("images/jared_ivey.png")
+quinn_ewers_img = load_resized_image("images/quinn_ewers.png")
+
+player_label['travis_hunter'] = Label(window, image=travis_hunter_img)
+player_label['abdul_carter'] = Label(window, image=abdul_carter_img)
+player_label['mason_graham'] = Label(window, image=mason_graham_img)
+player_label['will_campbell'] = Label(window, image=will_campbell_img)
+player_label['ashton_jeanty'] = Label(window, image=ashton_jeanty_img)
+player_label['cam_ward'] = Label(window, image=cam_ward_img)
+player_label['tetairoa_mcmillan'] = Label(window, image=tetairoa_mcmillan_img)
+player_label['shedeur_sanders'] = Label(window, image=shedeur_sanders_img)
+player_label['armand_membou'] = Label(window, image=armand_membou_img)
+player_label['tyler_warren'] = Label(window, image=tyler_warren_img)
+player_label['will_johnson'] = Label(window, image=will_johnson_img)
+player_label['jalon_walker'] = Label(window, image=jalon_walker_img)
+player_label['shemar_stewart'] = Label(window, image=shemar_stewart_img)
+player_label['kelvin_banks_jr'] = Label(window, image=kelvin_banks_jr_img)
+player_label['mykel_williams'] = Label(window, image=mykel_williams_img)
+player_label['mike_green'] = Label(window, image=mike_green_img)
+player_label['colston_loveland'] = Label(window, image=colston_loveland_img)
+player_label['kenneth_grant'] = Label(window, image=kenneth_grant_img)
+player_label['james_pearce_jr'] = Label(window, image=james_pearce_jr_img)
+player_label['josh_simmons'] = Label(window, image=josh_simmons_img)
+player_label['walter_nolen'] = Label(window, image=walter_nolen_img)
+player_label['matthew_golden'] = Label(window, image=matthew_golden_img)
+player_label['jahdae_barron'] = Label(window, image=jahdae_barron_img)
+player_label['jihaad_campbell'] = Label(window, image=jihaad_campbell_img)
+player_label['emeka_egbuka'] = Label(window, image=emeka_egbuka_img)
+player_label['malakai_starks'] = Label(window, image=malakai_starks_img)
+player_label['omarion_hampton'] = Label(window, image=omarion_hampton_img)
+player_label['derrick_harmon'] = Label(window, image=derrick_harmon_img)
+player_label['nick_emmanwori'] = Label(window, image=nick_emmanwori_img)
+player_label['tyler_booker'] = Label(window, image=tyler_booker_img)
+player_label['luther_burden_iii'] = Label(window, image=luther_burden_iii_img)
+player_label['grey_zabel'] = Label(window, image=grey_zabel_img)
+player_label['josh_conerly_jr'] = Label(window, image=josh_conerly_jr_img)
+player_label['donovan_ezeiruaku'] = Label(window, image=donovan_ezeiruaku_img)
+player_label['nic_scourton'] = Label(window, image=nic_scourton_img)
+player_label['shavon_revel_jr'] = Label(window, image=shavon_revel_jr_img)
+player_label['donovan_jackson'] = Label(window, image=donovan_jackson_img)
+player_label['maxwell_hairston'] = Label(window, image=maxwell_hairston_img)
+player_label['jaxson_dart'] = Label(window, image=jaxson_dart_img)
+player_label['aireontae_ersery'] = Label(window, image=aireontae_ersery_img)
+player_label['treveyon_henderson'] = Label(window, image=treveyon_henderson_img)
+player_label['benjamin_morrison'] = Label(window, image=benjamin_morrison_img)
+player_label['tyleik_williams'] = Label(window, image=tyleik_williams_img)
+player_label['landon_jackson'] = Label(window, image=landon_jackson_img)
+player_label['kaleb_johnson'] = Label(window, image=kaleb_johnson_img)
+player_label['azareyeh_thomas'] = Label(window, image=azareyeh_thomas_img)
+player_label['darius_alexander'] = Label(window, image=darius_alexander_img)
+player_label['alfred_collins'] = Label(window, image=alfred_collins_img)
+player_label['jt_tuimoloau'] = Label(window, image=jt_tuimoloau_img)
+player_label['jack_sawyer'] = Label(window, image=jack_sawyer_img)
+player_label['tj_sanders'] = Label(window, image=tj_sanders_img)
+player_label['trey_amos'] = Label(window, image=trey_amos_img)
+player_label['jonah_savaiinaea'] = Label(window, image=jonah_savaiinaea_img)
+player_label['xavier_watts'] = Label(window, image=xavier_watts_img)
+player_label['jayden_higgins'] = Label(window, image=jayden_higgins_img)
+player_label['tre_harris'] = Label(window, image=tre_harris_img)
+player_label['quinshon_judkins'] = Label(window, image=quinshon_judkins_img)
+player_label['princeley_umanmielen'] = Label(window, image=princeley_umanmielen_img)
+player_label['elic_ayomanor'] = Label(window, image=elic_ayomanor_img)
+player_label['tate_ratledge'] = Label(window, image=tate_ratledge_img)
+player_label['cameron_williams'] = Label(window, image=cameron_williams_img)
+player_label['harold_fannin_jr'] = Label(window, image=harold_fannin_jr_img)
+player_label['jalen_milroe'] = Label(window, image=jalen_milroe_img)
+player_label['wyatt_milum'] = Label(window, image=wyatt_milum_img)
+player_label['jared_ivey'] = Label(window, image=jared_ivey_img)
+player_label['quinn_ewers'] = Label(window, image=quinn_ewers_img)
 
 
-travis_hunter = Label(window, image=travis_hunter_img)
-shedeur_sanders = Label(window, image=shedeur_sanders_img)
-abdul_carter = Label(window, image=abdul_carter_img)
-cam_ward = Label(window, image=cam_ward_img)
-ashton_jeanty = Label(window, image=ashton_jeanty_img)
 
 
 
@@ -208,10 +217,25 @@ class DraftSimulator:
             self.available_players.remove(best_player)
             self.drafted_players.append((team, best_player))
             print(f"{team} selected {best_player['name']} (Position: {best_player['position']}, Score: {round(best_score, 2)})")
-            #travis_hunter.place(x=starting_x, y=starting_y)
-            #shedeur_sanders.place(x=starting_x, y=starting_y + 75)
-            #cam_ward.place(x=starting_x + 360, y=starting_y)
-            Label(best_player['name']).place(x=starting_x, y=starting_x)
+            speech = f"For the 2025 draft, the {team} selects {best_player['name']}"
+            engine.say(speech)
+            engine.runAndWait()
+            x_off = 0
+            y_off = 0
+            if self.current_pick< 8:
+                x_off = 0
+                y_off = 75*(self.current_pick) - self.current_pick
+            elif self.current_pick< 16:
+                x_off = 360
+                y_off = 75 * (self.current_pick-8) - self.current_pick%8
+            elif self.current_pick < 24:
+                x_off = 720
+                y_off = 75 * (self.current_pick-16) - self.current_pick%8
+            elif self.current_pick < 32:
+                x_off = 1080
+                y_off = 75 * (self.current_pick-24) - self.current_pick%8
+            player_id = best_player['name'].replace(" ", "_").lower()
+            player_label[player_id].place(x=starting_x+x_off, y=starting_y+y_off)
             self.current_pick += 1
 
     def run_draft(self):
@@ -262,7 +286,7 @@ team_needs = {
 }
 
 available_players = [
-    {"name": "Travis Hunter", "position": "WR/CB", "overall rank": 1, "stat score": 182.58, "combine score": 0},
+    {"name": "travis Hunter", "position": "WR/CB", "overall rank": 1, "stat score": 182.58, "combine score": 0},
     {"name": "Abdul Carter", "position": "DE", "overall rank": 2, "stat score": 164.5, "combine score": 0},
     {"name": "Mason Graham", "position": "DT", "overall rank": 3, "stat score": 143, "combine score": 0},
     {"name": "Will Campbell", "position": "OT", "overall rank": 4, "stat score": 100, "combine score": 40},
@@ -275,12 +299,12 @@ available_players = [
     {"name": "Will Johnson", "position": "CB", "overall rank": 11, "stat score": 100.5, "combine score": 0},
     {"name": "Jalon Walker", "position": "LB", "overall rank": 12, "stat score": 118.5, "combine score": 0},
     {"name": "Shemar Stewart", "position": "DE", "overall rank": 13, "stat score": 100.5, "combine score": 60},
-    {"name": "Kelvin Banks Jr. ", "position": "OT", "overall rank": 14, "stat score": 100, "combine score": 0},
+    {"name": "Kelvin Banks Jr", "position": "OT", "overall rank": 14, "stat score": 100, "combine score": 0},
     {"name": "Mykel Williams", "position": "DE", "overall rank": 15, "stat score": 82, "combine score": 0},
     {"name": "Mike Green", "position": "DE", "overall rank": 16, "stat score": 150, "combine score": 20},
     {"name": "Colston Loveland", "position": "TE", "overall rank": 17, "stat score": 58.7, "combine score": 0},
     {"name": "Kenneth Grant", "position": "DT", "overall rank": 18, "stat score": 112, "combine score": 0},
-    {"name": "James Pearce Jr.", "position": "DE", "overall rank": 19, "stat score": 121, "combine score": 0},
+    {"name": "James Pearce Jr", "position": "DE", "overall rank": 19, "stat score": 121, "combine score": 0},
     {"name": "Josh Simmons", "position": "OT", "overall rank": 20, "stat score": 100, "combine score": 0},
     {"name": "Walter Nolen", "position": "DT", "overall rank": 21, "stat score": 147, "combine score": 0},
     {"name": "Matthew Golden", "position": "WR", "overall rank": 22, "stat score": 62.3, "combine score": 20},
@@ -294,13 +318,13 @@ available_players = [
     {"name": "Tyler Booker", "position": "OG", "overall rank": 30, "stat score": 100, "combine score": -80},
     {"name": "Luther Buden III", "position": "WR", "overall rank": 31, "stat score": 66.4, "combine score": 20},
     {"name": "Grey Zabel", "position": "OT", "overall rank": 32, "stat score": 100, "combine score": 20},
-    {"name": "John Conerly Jr.", "position": "OT", "overall rank": 33, "stat score": 100, "combine score": 0},
+    {"name": "Josh Conerly Jr", "position": "OT", "overall rank": 33, "stat score": 100, "combine score": 0},
     {"name": "Donovan Ezeiruaku", "position": "DE", "overall rank": 34, "stat score": 170, "combine score": 20},
     {"name": "Nic Scourton", "position": "DE", "overall rank": 35, "stat score": 125.5, "combine score": 0},
-    {"name": "Shavon Revel Jr.", "position": "CB", "overall rank": 36, "stat score": 118, "combine score": 0},
+    {"name": "Shavon Revel Jr", "position": "CB", "overall rank": 36, "stat score": 118, "combine score": 0},
     {"name": "Donovan Jackson", "position": "OG", "overall rank": 37, "stat score": 100, "combine score": 20},
     {"name": "Maxwell Hairston", "position": "CB", "overall rank": 38, "stat score": 92.5, "combine score": 60},
-    {"name": "Jaxon Dart", "position": "QB", "overall rank": 39, "stat score": 180.7, "combine score": 0},
+    {"name": "Jaxson Dart", "position": "QB", "overall rank": 39, "stat score": 180.7, "combine score": 0},
     {"name": "Aireontae Ersery", "position": "OT", "overall rank": 40, "stat score": 100 , "combine score": 40},
     {"name": "TreVeyon Henderson", "position": "RB", "overall rank": 41, "stat score": 144, "combine score": 60},
     {"name": "Benjamin Morrison", "position": "CB", "overall rank": 42, "stat score": 83.5, "combine score": 0},
@@ -310,9 +334,9 @@ available_players = [
     {"name": "Azareye'h Thomas", "position": "CB", "overall rank": 46, "stat score": 96.5, "combine score": -20},
     {"name": "Darius Alexander", "position": "DT", "overall rank": 47, "stat score": 131.5, "combine score": 20},
     {"name": "Alfred Collins", "position": "DT", "overall rank": 48, "stat score": 133.5, "combine score": -40},
-    {"name": "J.T. Tuimoloau", "position": "DE", "overall rank": 49, "stat score": 160, "combine score": 0},
+    {"name": "JT Tuimoloau", "position": "DE", "overall rank": 49, "stat score": 160, "combine score": 0},
     {"name": "Jack Sawyer", "position": "DE", "overall rank": 50, "stat score": 159.5, "combine score": 0},
-    {"name": "T.J. Sanders", "position": "DT", "overall rank": 51, "stat score": 150, "combine score": 0},
+    {"name": "TJ Sanders", "position": "DT", "overall rank": 51, "stat score": 150, "combine score": 0},
     {"name": "Trey Amos", "position": "CB", "overall rank": 52, "stat score": 110, "combine score": -20},
     {"name": "Jonah Savaiinaea", "position": "OT", "overall rank": 53, "stat score": 100, "combine score": 40},
     {"name": "Xavier Watts", "position": "S", "overall rank": 54, "stat score": 132, "combine score": 0},
@@ -323,13 +347,15 @@ available_players = [
     {"name": "Elic Ayomanor", "position": "WR", "overall rank": 59, "stat score": 135.5, "combine score": 20},
     {"name": "Tate Ratledge", "position": "OG", "overall rank": 60, "stat score": 100, "combine score": 60},
     {"name": "Cameron Williams", "position": "OT", "overall rank": 61, "stat score": 100, "combine score": 20},
-    {"name": "Harold Fanin Jr.", "position": "TE", "overall rank": 62, "stat score": 125.4, "combine score": 20},
+    {"name": "Harold Fanin Jr", "position": "TE", "overall rank": 62, "stat score": 125.4, "combine score": 20},
     {"name": "Jalen Milroe", "position": "QB", "overall rank": 63, "stat score": 148.8, "combine score": 0},
     {"name": "Wyatt Milum", "position": "OT", "overall rank": 64, "stat score": 100, "combine score": -40},
     {"name": "Jared Ivey", "position": "DE", "overall rank": 65, "stat score": 149, "combine score": 0},
     {"name": "Quinn Ewers", "position": "QB", "overall rank": 66, "stat score": 135, "combine score": 0},
 ]
-
+def run_draft_thread():
+    simulator.run_draft()
 simulator = DraftSimulator(teams, team_needs, available_players)
-simulator.run_draft()
+draft_thread = threading.Thread(target=run_draft_thread)
+draft_thread.start()
 window.mainloop()
